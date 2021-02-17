@@ -7,11 +7,6 @@ from PIL import Image
 import numpy as np
 from pycococreatortools import pycococreatortools
 
-
-ROOT_DIR = './'
-IMAGE_DIR = os.path.join(ROOT_DIR, "shapes_train")
-ANNOTATION_DIR = os.path.join(ROOT_DIR, "annotations")
-
 INFO = {
     "description": "Cell Dataset",
     "url": "https://github.com/waspinator/pycococreator",
@@ -42,11 +37,8 @@ CATEGORIES = [
 def filter_for_jpeg(root, files):
     file_types = ['*.jpeg', '*.jpg']
     file_types = r'|'.join([fnmatch.translate(x) for x in file_types])
-    print(file_types)
     files = [os.path.join(root, f) for f in files]
-    print(files)
     #files = [f for f in files if re.match(file_types, f)]
-    print(files)
     
     return files
  
@@ -55,14 +47,14 @@ def filter_for_annotations(root, files, image_filename):
     file_types = r'|'.join([fnmatch.translate(x) for x in file_types])
     basename_no_extension = os.path.splitext(os.path.basename(image_filename))[0]
     file_name_prefix = basename_no_extension + '.*'
-    print(file_name_prefix)
+    #print(file_name_prefix)
     files = [os.path.join(root, f) for f in files]
     files = [f for f in files if re.match(file_types, f)]
     files = [f for f in files if re.match(file_name_prefix, os.path.splitext(os.path.basename(f))[0])]
  
     return files
  
-def main():
+def main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR):
  
     coco_output = {
         "info": INFO,
@@ -79,24 +71,22 @@ def main():
     
     # filter for jpeg images
     for root, _, files in os.walk(IMAGE_DIR):
-        print(root)
-        print(files)
-        print(IMAGE_DIR)
+        #print(root)
+        #print(files)
+        #print(IMAGE_DIR)
         image_files = filter_for_jpeg(root, files)
-        print(image_files)
+        #print(image_files)
  
         # go through each image
         for image_filename in image_files:
-            print(image_filename)
+            #print(image_filename)
             image = Image.open(image_filename)
             image_info = pycococreatortools.create_image_info(
                 image_id, os.path.basename(image_filename), image.size)
             coco_output["images"].append(image_info)
-            print(4)
  
             # filter for associated png annotations
             for root, _, files in os.walk(ANNOTATION_DIR):
-                print(5)
                 annotation_files = filter_for_annotations(root, files, image_filename)
  
                 # go through each associated annotation
@@ -120,9 +110,24 @@ def main():
  
             image_id = image_id + 1
  
-    with open('{}/instances_cell_shape_train.json'.format(ROOT_DIR), 'w') as output_json_file:
-        json.dump(coco_output, output_json_file, indent=4)
+    with open(OUTPUT_DIR, 'w') as output_json_file:
+        json.dump(coco_output, output_json_file, indent = 4)
  
  
 if __name__ == "__main__":
-    main()
+    
+    # train
+    ROOT_DIR = 'Data/Test/'
+    IMAGE_DIR = os.path.join(ROOT_DIR, "shapes_test")
+    ANNOTATION_DIR = os.path.join(ROOT_DIR, "annotations")    
+    OUTPUT_DIR = 'Data/instances_cell_shape_test.json'
+    
+    main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR)
+    
+    # train
+    ROOT_DIR = 'Data/Train/'
+    IMAGE_DIR = os.path.join(ROOT_DIR, "shapes_train")
+    ANNOTATION_DIR = os.path.join(ROOT_DIR, "annotations")
+    OUTPUT_DIR = 'Data/instances_cell_shape_train.json'
+    
+    main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR)
