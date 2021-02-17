@@ -72,7 +72,7 @@ def Copy_RenamePics_Test():
     
 if __name__ == "__main__":
     
-    #Copy_RenamePics_Train()
-    #Copy_RenamePics_Test()
-    #RecreateMasks_train()
-    #RecreateMasks_test()
+    Copy_RenamePics_Train()
+    Copy_RenamePics_Test()
+    RecreateMasks_train()
+    RecreateMasks_test()
