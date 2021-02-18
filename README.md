@@ -1,4 +1,5 @@
 # SoloCell
+A Cell Instance Segmentation Tool using SOLOv2.
 
 ## Quick Start
 
@@ -8,7 +9,7 @@
 - Cuda = 10.1
 - GCC = 5.5
 
-### Download TMP-SS
+### Download SoloCell
 ```
 git-lfs clone https://github.com/Liuzhe30/SoloCell
 ```
