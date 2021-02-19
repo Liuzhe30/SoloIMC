@@ -12,7 +12,7 @@ A Cell Instance Segmentation Tool using SOLOv2.
 - GCC 4.9 or higher
 - [mmcv 0.2.16](https://github.com/open-mmlab/mmcv/tree/v0.2.16)
 
-or use the provided yaml file [solov2-pytorch1.4-environment.yaml](Environment/solov2-pytorch1.4-environment.yaml)(Python = 3.7, Pytorch = 1.4, Cuda = 10.1, GCC = 5.5).
+or use the provided yaml file [solov2-pytorch1.4-environment.yaml](Environment/solov2-pytorch1.4-environment.yaml) (with Python = 3.7, PyTorch = 1.4, CUDA = 10.1, GCC = 5.5).
 
 ### Download SoloCell
 ```shell
