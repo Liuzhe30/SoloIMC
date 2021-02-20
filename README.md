@@ -68,7 +68,7 @@ cd SOLO
 python tools/train.py ${CONFIG_FILE}
 
 Example:
-python tools/train.py configs/solo/solov2_r50_fpn_8gpu_1x_cellpose.py
+python tools/train.py configs/solov2/solov2_r50_fpn_8gpu_1x_cellpose.py
 ```
 
 ## Contributing to the project
