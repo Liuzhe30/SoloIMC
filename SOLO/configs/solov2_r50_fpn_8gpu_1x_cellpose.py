@@ -17,7 +17,7 @@ model = dict(
         num_outs=5),
     bbox_head=dict(
         type='SOLOv2Head',
-        num_classes=81,
+        num_classes=2,
         in_channels=256,
         stacked_convs=4,
         seg_feat_channels=512,
@@ -56,14 +56,14 @@ test_cfg = dict(
     sigma=2.0,
     max_per_img=100)
 # dataset settings
-dataset_type = 'CocoDataset'
+dataset_type = 'CellPose'
 data_root = '../Data/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', with_bbox=True, with_mask=True),
-    dict(type='Resize', img_scale=(1333, 800), keep_ratio=True),
+    dict(type='Resize', img_scale=(383, 512), keep_ratio=True),
     dict(type='RandomFlip', flip_ratio=0.5),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size_divisor=32),
@@ -74,7 +74,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(1333, 800),
+        img_scale=(383, 512),
         flip=False,
         transforms=[
             dict(type='Resize', keep_ratio=True),
