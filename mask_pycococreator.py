@@ -120,7 +120,7 @@ if __name__ == "__main__":
     ROOT_DIR = 'Data/Test/'
     IMAGE_DIR = os.path.join(ROOT_DIR, "shapes_test")
     ANNOTATION_DIR = os.path.join(ROOT_DIR, "annotations")    
-    OUTPUT_DIR = 'Data/instances_cell_shape_test.json'
+    OUTPUT_DIR = 'Data/annotations/instances_cell_shape_test.json'
     
     main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR)
     
@@ -128,6 +128,6 @@ if __name__ == "__main__":
     ROOT_DIR = 'Data/Train/'
     IMAGE_DIR = os.path.join(ROOT_DIR, "shapes_train")
     ANNOTATION_DIR = os.path.join(ROOT_DIR, "annotations")
-    OUTPUT_DIR = 'Data/instances_cell_shape_train.json'
+    OUTPUT_DIR = 'Data/annotations/instances_cell_shape_train.json'
     
     main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR)
