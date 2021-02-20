@@ -23,7 +23,7 @@ def vis_seg(data, result, img_norm_cfg, data_id, colors, score_thr, save_dir):
     img_metas = data['img_meta'][0].data[0]
     imgs = tensor2imgs(img_tensor, **img_norm_cfg)
     assert len(imgs) == len(img_metas)
-    class_names = get_classes('coco')
+    class_names = get_classes('cellpose')
 
     for img, img_meta, cur_result in zip(imgs, img_metas, result):
         if cur_result is None:
@@ -61,7 +61,7 @@ def vis_seg(data, result, img_norm_cfg, data_id, colors, score_thr, save_dir):
             cur_mask = mmcv.imresize(cur_mask, (w, h))
             cur_mask = (cur_mask > 0.5).astype(np.uint8)
             if cur_mask.sum() == 0:
-               continue
+                continue
             color_mask = np.random.randint(
                 0, 256, (1, 3), dtype=np.uint8)
             cur_mask_bool = cur_mask.astype(np.bool)
@@ -267,11 +267,13 @@ def main():
             print('Starting evaluate {}'.format(' and '.join(eval_types)))
             if eval_types == ['proposal_fast']:
                 result_file = args.out
-                coco_eval(result_file, eval_types, dataset.coco)
+                #coco_eval(result_file, eval_types, dataset.coco)
+                coco_eval(result_file, eval_types, dataset.cellpose)
             else:
                 if not isinstance(outputs[0], dict):
                     result_files = results2json(dataset, outputs, args.out)
-                    coco_eval(result_files, eval_types, dataset.coco)
+                    #coco_eval(result_files, eval_types, dataset.coco)
+                    coco_eval(result_file, eval_types, dataset.cellpose)
                 else:
                     for name in outputs[0]:
                         print('\nEvaluating {}'.format(name))
@@ -279,7 +281,8 @@ def main():
                         result_file = args.out + '.{}'.format(name)
                         result_files = results2json(dataset, outputs_,
                                                     result_file)
-                        coco_eval(result_files, eval_types, dataset.coco)
+                        #coco_eval(result_files, eval_types, dataset.coco)
+                        coco_eval(result_file, eval_types, dataset.cellpose)
 
     # Save predictions in the COCO json format
     if args.json_out and rank == 0:
