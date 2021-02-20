@@ -12,6 +12,11 @@ def voc_classes():
         'pottedplant', 'sheep', 'sofa', 'train', 'tvmonitor'
     ]
 
+def cellpose_classes():
+    return [
+        'cell'
+    ]
+
 
 def imagenet_det_classes():
     return [
@@ -95,7 +100,8 @@ dataset_aliases = {
     'imagenet_vid': ['vid', 'imagenet_vid', 'ilsvrc_vid'],
     'coco': ['coco', 'mscoco', 'ms_coco'],
     'wider_face': ['WIDERFaceDataset', 'wider_face', 'WDIERFace'],
-    'cityscapes': ['cityscapes']
+    'cityscapes': ['cityscapes'],
+    'cellpose': ['cellpose', 'Cellpose', 'CellPose']
 }
 
 
