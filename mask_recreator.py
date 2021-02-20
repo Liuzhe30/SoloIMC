@@ -18,23 +18,6 @@ def RecreateMasks_train():
     for i in range(100,540):
         I = mpimg.imread(source + str(i) + "_masks.png")
         mpimg.imsave(target + str(i + 1) + ".png",I)
-    #
-    #mpimg.imsave('D:/imc/SoloCell/train/labels/004_masks.png',I)
-    
-    #color = []
-    #for i in img:
-        #for j in i:
-            #if(j not in color):
-                #color.append(j)
-    #print(color)
-    #color.sort()
-    #print(color)
-    #print(len(color))
-    
-    #print(type(img))
-    #io.imshow(img)
-    #io.show()    
-
 
 def RecreateMasks_test():  
     
@@ -72,7 +55,9 @@ def Copy_RenamePics_Test():
     
 if __name__ == "__main__":
     
+    os.system("mkdir -p Data/Train/shapes_train/ Data/Train/labels/ Data/Train/annotations/")
     Copy_RenamePics_Train()
+    os.system("mkdir -p Data/Test/shapes_test/ Data/Test/labels/ Data/Test/annotations/")
     Copy_RenamePics_Test()
     RecreateMasks_train()
     RecreateMasks_test()
