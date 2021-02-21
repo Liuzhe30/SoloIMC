@@ -57,6 +57,8 @@ python3 mask_recreator.py
 ```
 If you want to recreate the annotation files, please run the following commands:
 ```shell
+pip install cython
+pip install git+git://github.com/waspinator/coco.git@2.1.0
 python3 mask_annotation.py
 python3 mask_pycococreator.py
 ```
@@ -77,7 +79,7 @@ python tools/train.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py
 python tools/test_ins.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --show --out  ${OUTPUT_FILE} --eval segm
 
 Example: 
-python tools/test_ins.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_12.pth --show --out  results_solo.pkl --eval segm
+python tools/test_ins.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_20.pth --show --out  results_solo.pkl --eval segm
 ```
 
 ### Visualization
@@ -85,7 +87,7 @@ python tools/test_ins.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/s
 python tools/test_ins_vis.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --show --save_dir  ${SAVE_DIR}
 
 Example: 
-python tools/test_ins_vis.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_12.pth --show --save_dir  work_dirs/vis_solo
+python tools/test_ins_vis.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_20.pth --show --save_dir  work_dirs/vis_solo
 ```
 
 ## Contributing to the project
