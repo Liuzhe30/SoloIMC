@@ -75,6 +75,7 @@ def main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR):
         #print(files)
         #print(IMAGE_DIR)
         image_files = filter_for_jpeg(root, files)
+        image_files.sort()
         #print(image_files)
  
         # go through each image
@@ -87,8 +88,8 @@ def main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR):
  
             # filter for associated png annotations
             for root, _, files in os.walk(ANNOTATION_DIR):
-                annotation_files = filter_for_annotations(root, files, image_filename)
- 
+                annotation_files = sorted(filter_for_annotations(root, files, image_filename))
+                
                 # go through each associated annotation
                 for annotation_filename in annotation_files:
                     
