@@ -1,5 +1,6 @@
 # SoloCell
 A Cell Instance Segmentation Tool using SOLOv2.
+<p align="center"><img width="80%" src="example.png" /></p>
 
 ## Quick Start
 
