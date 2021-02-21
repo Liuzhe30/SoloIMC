@@ -27,7 +27,7 @@ def rgb2masks(background_color, mask_path, label_name):
 
 if __name__ == "__main__":
     
-    I1 = cv2.imread('Data/Train/labels/1.png', 1)
+    I1 = cv2.imread('Data/Train/labels/000.png', 1)
     background_color = I1[0][0]        
 
     # test annotation
