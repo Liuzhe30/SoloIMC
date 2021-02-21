@@ -11,13 +11,13 @@ def RecreateMasks_train():
     
     for i in range(0,10):
         I = mpimg.imread(source + "00" + str(i) + "_masks.png")
-        mpimg.imsave(target + str(i + 1) + ".png",I)
+        mpimg.imsave(target + "00" + str(i) + ".png",I)
     for i in range(10,100):
         I = mpimg.imread(source + "0" + str(i) + "_masks.png")
-        mpimg.imsave(target + str(i + 1) + ".png",I)
+        mpimg.imsave(target + "0" + str(i) + ".png",I)
     for i in range(100,540):
         I = mpimg.imread(source + str(i) + "_masks.png")
-        mpimg.imsave(target + str(i + 1) + ".png",I)
+        mpimg.imsave(target + str(i) + ".png",I)
 
 def RecreateMasks_test():  
     
@@ -26,10 +26,10 @@ def RecreateMasks_test():
     
     for i in range(0,10):
         I = mpimg.imread(source + "00" + str(i) + "_masks.png")
-        mpimg.imsave(target + str(i + 1) + ".png",I)
+        mpimg.imsave(target + "00" + str(i) + ".png",I)
     for i in range(10,68):
         I = mpimg.imread(source + "0" + str(i) + "_masks.png")
-        mpimg.imsave(target + str(i + 1) + ".png",I)
+        mpimg.imsave(target + "0" + str(i) + ".png",I)
 
         
 def Copy_RenamePics_Train():
@@ -37,11 +37,11 @@ def Copy_RenamePics_Train():
     source = "Data/CellPose_Data/Train/"
     target = "Data/Train/shapes_train/"
     for i in range(0,10):
-        shutil.copy(source + "00" + str(i) + "_img.png", target + str(i + 1) + ".png") #shutil.copy(source, target)
+        shutil.copy(source + "00" + str(i) + "_img.png", target + "00" + str(i) + ".png") #shutil.copy(source, target)
     for i in range(10,100):
-        shutil.copy(source + "0" + str(i) + "_img.png", target + str(i + 1) + ".png") 
+        shutil.copy(source + "0" + str(i) + "_img.png", target + "0" + str(i) + ".png") 
     for i in range(100,540):
-        shutil.copy(source + str(i) + "_img.png", target + str(i + 1) + ".png")   
+        shutil.copy(source + str(i) + "_img.png", target + str(i) + ".png")   
         
 
 def Copy_RenamePics_Test():
@@ -49,9 +49,9 @@ def Copy_RenamePics_Test():
     source = "Data/CellPose_Data/Test/"
     target = "Data/Test/shapes_test/"
     for i in range(0,10):
-        shutil.copy(source + "00" + str(i) + "_img.png", target + str(i + 1) + ".png") #shutil.copy(source, target)
+        shutil.copy(source + "00" + str(i) + "_img.png", target + "00" + str(i) + ".png") #shutil.copy(source, target)
     for i in range(10,68):
-        shutil.copy(source + "0" + str(i) + "_img.png", target + str(i + 1) + ".png") 
+        shutil.copy(source + "0" + str(i) + "_img.png", target + "0" + str(i) + ".png") 
     
 if __name__ == "__main__":
     
