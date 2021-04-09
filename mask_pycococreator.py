@@ -8,7 +8,7 @@ import numpy as np
 from pycococreatortools import pycococreatortools
 
 INFO = {
-    "description": "Cell Dataset",
+    "description": "IMC Dataset",
     "url": "https://github.com/waspinator/pycococreator",
     "version": "0.1.0",
     "year": 2021,
@@ -28,8 +28,8 @@ LICENSES = [
 CATEGORIES = [
     {
         'id': 1,
-        'name': 'cell',
-        'supercategory': 'cell',
+        'name': 'nucleus',
+        'supercategory': 'nucleus',
     }
 ]
 
@@ -88,7 +88,8 @@ def main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR):
  
             # filter for associated png annotations
             for root, _, files in os.walk(ANNOTATION_DIR):
-                annotation_files = sorted(filter_for_annotations(root, files, image_filename))
+                annotation_files = filter_for_annotations(root, files, image_filename)
+                annotation_files.sort()
                 
                 # go through each associated annotation
                 for annotation_filename in annotation_files:
@@ -117,7 +118,7 @@ def main(IMAGE_DIR, ANNOTATION_DIR, OUTPUT_DIR):
  
 if __name__ == "__main__":
     
-    # train
+    # test
     ROOT_DIR = 'Data/Test/'
     IMAGE_DIR = os.path.join(ROOT_DIR, "shapes_test")
     ANNOTATION_DIR = os.path.join(ROOT_DIR, "annotations")    
