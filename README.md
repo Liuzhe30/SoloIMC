@@ -1,5 +1,5 @@
-# SoloCell
-A Cell Instance Segmentation Tool using SOLOv2.
+# SoloIMC
+An IMC Necleus Instance Segmentation Tool using SOLOv2.
 <p align="center"><img width="80%" src="example.png" /></p>
 
 ## Quick Start
@@ -15,9 +15,9 @@ A Cell Instance Segmentation Tool using SOLOv2.
 
 or use the provided yaml file [solov2-pytorch1.4-environment.yaml](Environment/solov2-pytorch1.4-environment.yaml) (with Python = 3.7, PyTorch = 1.4, CUDA = 10.1, GCC = 5.5).
 
-### Download SoloCell
+### Download SoloIMC
 ```shell
-git-lfs clone https://github.com/Liuzhe30/SoloCell
+git-lfs clone https://github.com/Liuzhe30/SoloIMC
 ```
 
 ### Install [SOLO](https://github.com/WXinlong/SOLO)
@@ -71,7 +71,7 @@ cd SOLO
 python tools/train.py ${CONFIG_FILE}
 
 Example:
-python tools/train.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py
+python tools/train.py configs/solov2_r50_fpn_8gpu_1x_imc.py
 ```
 
 ### Testing
@@ -80,7 +80,7 @@ python tools/train.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py
 python tools/test_ins.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --show --out  ${OUTPUT_FILE} --eval segm
 
 Example: 
-python tools/test_ins.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_20.pth --show --out  results_solo.pkl --eval segm
+python tools/test_ins.py configs/solov2_r50_fpn_8gpu_1x_imc.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_10.pth --show --out  results_solo.pkl --eval segm
 ```
 
 ### Visualization
@@ -88,11 +88,11 @@ python tools/test_ins.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/s
 python tools/test_ins_vis.py ${CONFIG_FILE} ${CHECKPOINT_FILE} --show --save_dir  ${SAVE_DIR}
 
 Example: 
-python tools/test_ins_vis.py configs/solov2_r50_fpn_8gpu_1x_cellpose.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_20.pth --show --save_dir  work_dirs/vis_solo
+python tools/test_ins_vis.py configs/solov2_r50_fpn_8gpu_1x_imc.py  work_dirs/solov2_release_r50_fpn_8gpu_1x/epoch_10.pth --show --save_dir  work_dirs/vis_solo
 ```
 
 ## Contributing to the project
 Any pull requests or issues are welcome.
 
 ## Progress
-- [x] README for running SoloCell.
+- [x] README for running SoloIMC.
