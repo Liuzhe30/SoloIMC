@@ -21,7 +21,7 @@ def rgb2masks(background_color, mask_path, label_name):
             cell_dict[tuple(lbl[i][j])] = idx
             mask = (lbl == lbl[i][j]).all(-1)
             cell = np.where(mask[..., None], white_mask, 0)
-            mask_name = mask_path + lbl_id + '_cell_' + str(idx) + '.png'
+            mask_name = mask_path + lbl_id + '_nucleus_' + str(idx) + '.png'
             cv2.imwrite(mask_name, cell)
             idx += 1
 
